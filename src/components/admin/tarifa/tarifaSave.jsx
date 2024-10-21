@@ -1,0 +1,185 @@
+import React, { useState, useEffect, useRef } from "react";
+import service from "../../../service/modules/tarifaService";
+import util from "../../../service/common/util";
+import { Toast } from "primereact/toast";
+
+const TarifaSave = ({ row, find, mode }) => {
+  const toast = useRef(null);
+  const [tarifa, setTarifa] = useState("");
+  const [plazo, setPlazo] = useState("");
+  const [departamento, setDepartamento] = useState("");
+  const [provincia, setProvincia] = useState("");
+  const [distrito, setDistrito] = useState("");
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = () => {
+    if (mode === "UPDATE") fillForm();
+  };
+
+  const fillForm = () => {
+    setDepartamento(row.departamento);
+    setProvincia(row.provincia);
+    setDistrito(row.distrito);
+    setTarifa(row.tarifa);
+    setPlazo(row.plazo);
+  };
+
+  const validateForm = () => {
+    if (!departamento) {
+      util.warning(toast, "Debe ingresar el departamento");
+      return false;
+    } else if (!provincia) {
+      util.warning(toast, "Debe ingresar la provincia");
+      return false;
+    } else if (!distrito) {
+      util.warning(toast, "Debe ingresa el distrito");
+      return false;
+    } else if (!tarifa) {
+      util.warning(toast, "Debe ingresar la tarifa");
+      return false;
+    } else if (!plazo) {
+      util.warning(toast, "Debe ingresar el plazo");
+      return false;
+    }
+    return true;
+  };
+
+  const updateTarifa = async () => {
+    if (validateForm()) {
+      const body = {
+        tarifa,
+        plazo,
+        departamento: departamento.toUpperCase(),
+        provincia: provincia.toUpperCase(),
+        distrito: distrito.toUpperCase(),
+      };
+      const { type } = await service.update(row._id, body);
+      if (type === "SUCCESS") {
+        util.success(toast, "Se ha actualizado correctamente el registro");
+        await find();
+      } else
+        util.error(toast, "Ha ocurrido un error al actualizar el registro");
+    }
+  };
+
+  const clearForm = () => {
+    setDepartamento("");
+    setDistrito("");
+    setProvincia("");
+    setPlazo("");
+    setTarifa("");
+  };
+
+  const doSave = async () => {
+    if (validateForm()) {
+      const body = {
+        tarifa,
+        plazo,
+        departamento: departamento.toUpperCase(),
+        provincia: provincia.toUpperCase(),
+        distrito: distrito.toUpperCase(),
+      };
+      const { type } = await service.save(body);
+      if (type === "EXIST")
+        util.warning(toast, "El registro que quiere ingresar ya existe");
+      else if (type === "SUCCESS") {
+        util.success(toast, "Se ha guardado correctamente el registro");
+        await find();
+        clearForm();
+      } else if (type === "ERROR")
+        util.error(toast, "Ha ocurrido un error al guardar el registro");
+    }
+  };
+
+  return (
+    <>
+      <Toast ref={toast} />
+      <table>
+        <tbody>
+          <tr>
+            <th>Departamento:</th>
+            <td>
+              <input
+                type="text"
+                value={departamento}
+                onChange={(e) => setDepartamento(e.target.value)}
+                style={{ textTransform: "uppercase" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Provincia:</th>
+            <td>
+              <input
+                type="text"
+                value={provincia}
+                onChange={(e) => setProvincia(e.target.value)}
+                style={{ textTransform: "uppercase" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Distrito:</th>
+            <td>
+              <input
+                type="text"
+                value={distrito}
+                onChange={(e) => setDistrito(e.target.value)}
+                style={{ textTransform: "uppercase" }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Tarifa:</th>
+            <td>
+              <input
+                type="number"
+                name="tarifa"
+                id="tarifa"
+                value={tarifa}
+                onChange={(e) => setTarifa(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <th>Plazo:</th>
+            <td>
+              <input
+                type="text"
+                name="plazo"
+                id="plazo"
+                value={plazo}
+                onChange={(e) => setPlazo(e.target.value)}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td colSpan={2}>
+              {mode === "UPDATE" && (
+                <button
+                  className="btn waves-effect waves-light black darken-4"
+                  onClick={updateTarifa}
+                >
+                  Actualizar
+                </button>
+              )}
+              {mode === "SAVE" && (
+                <button
+                  className="btn waves-effect waves-light black darken-4"
+                  onClick={doSave}
+                >
+                  Guardar
+                </button>
+              )}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  );
+};
+
+export default TarifaSave;
