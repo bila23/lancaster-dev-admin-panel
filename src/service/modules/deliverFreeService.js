@@ -1,10 +1,19 @@
 import http from "../common/httpService";
+import moment from "moment";
 
 const api = "/deliver-free";
 
 async function findAll() {
   const { data } = await http.get(api);
-  return data;
+  const result = [];
+  if (data && data.length > 0) {
+    for (const m of data)
+      result.push({
+        ...m,
+        fechaCreaString: moment(m.fechaCrea).format("DD/MM/YYYY hh:mm:ss"),
+      });
+  }
+  return result;
 }
 
 async function findActive() {
