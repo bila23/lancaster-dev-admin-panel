@@ -16,12 +16,14 @@ import OrdenCompra from "../admin/ordenCompra";
 import userShopQuery from "../user-shop/userShopQuery";
 import Tarifa from "../admin/tarifa/tarifa";
 import CategoriaQuery from "../categoria/categoriaQuery";
+import DeliverFreeQuery from "../deliverfree/deliverFreeQuery";
 
 class Template extends Component {
   render() {
     const { user } = this.props;
     return (
       <Switch>
+        <Route path="/deliver-free" component={DeliverFreeQuery} />
         <Route path="/categoria" component={CategoriaQuery} />
         <Route path="/tarifa" component={Tarifa} />
         <Route path="/user-reg" component={userShopQuery} />
