@@ -125,6 +125,12 @@ const Menu = (props) => {
                   Categor&iacute;as
                 </Link>
               </li>
+              <li>
+                <Link to="/deliver-free" className="sidenav-close">
+                  <i className="material-icons">local_shipping</i>
+                  Deliver Gratis
+                </Link>
+              </li>
             </ul>
           </CollapsibleItem>
         </Collapsible>
