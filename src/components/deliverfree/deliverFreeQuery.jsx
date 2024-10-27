@@ -101,7 +101,7 @@ const DeliverFreeQuery = () => {
                     filterMatchMode="contains"
                   />
                   <Column
-                    field="valor"
+                    field="valorString"
                     header="Valor"
                     sortable
                     filter

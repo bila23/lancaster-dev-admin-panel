@@ -28,9 +28,10 @@ const DeliverFreeSave = ({ find, toast, mode, model }) => {
 
   const doSave = async () => {
     if (validateForm()) {
-      const body = { valor };
-      const { type, message } = await service.save(body);
-      if (type !== "SUCCESS") util.warning(toast, message);
+      const body = { valor, activo: true };
+      const { type } = await service.save(body);
+      if (type !== "SUCCESS")
+        util.warning(toast, "No se pudo guardar el registro");
       else {
         util.success(toast, "Se ha guardado correctamente el registro");
         clearForm();

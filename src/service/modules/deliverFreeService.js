@@ -1,5 +1,6 @@
 import http from "../common/httpService";
 import moment from "moment";
+import util from "../common/util";
 
 const api = "/deliver-free";
 
@@ -11,6 +12,7 @@ async function findAll() {
       result.push({
         ...m,
         fechaCreaString: moment(m.fechaCrea).format("DD/MM/YYYY hh:mm:ss"),
+        valorString: util.formatNumber(m.valor),
       });
   }
   return result;
