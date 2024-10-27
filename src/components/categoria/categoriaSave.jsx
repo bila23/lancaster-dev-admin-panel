@@ -21,7 +21,6 @@ const CategoriaSave = ({ find, toast, mode, model }) => {
 
   const fillForm = () => {
     setEditClass("active");
-    console.log(model);
     setNombre(model.nombre);
     setCodigo(model.codigo);
     setActivo(model.activo);
