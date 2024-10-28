@@ -19,6 +19,7 @@ const DeliverFreeSave = ({ find, toast, mode, model }) => {
   };
 
   const fillForm = () => {
+    setNombre(model.nombre);
     setValor(model.valor);
   };
 
@@ -98,13 +99,18 @@ const DeliverFreeSave = ({ find, toast, mode, model }) => {
         </div>
       </div>
       {mode === "UPDATE" && (
-        <Dropdown
-          value={activo}
-          onChange={(e) => setActivo(e.value)}
-          options={util.ESTADO_OPTIONS}
-          style={{ width: "100%" }}
-          placeholder="Estado del delivery"
-        />
+        <div className="row">
+          <div className="col s12">
+            <div>Estado:</div>
+            <Dropdown
+              value={activo}
+              onChange={(e) => setActivo(e.value)}
+              options={util.ESTADO_OPTIONS}
+              style={{ width: "100%" }}
+              placeholder="Estado del delivery"
+            />
+          </div>
+        </div>
       )}
       <div className="row">
         <div className="col s12">
