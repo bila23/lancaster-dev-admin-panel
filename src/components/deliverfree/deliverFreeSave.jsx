@@ -64,6 +64,7 @@ const DeliverFreeSave = ({ find, toast, mode, model }) => {
   };
 
   const clearForm = () => {
+    setNombre("");
     setValor("");
   };
 
