@@ -3,6 +3,7 @@ import service from "../../service/modules/deliverFreeService";
 import util from "../../service/common/util";
 import Btn from "../common/btn";
 import { InputNumber } from "primereact/inputnumber";
+import { Dropdown } from "primereact/dropdown";
 
 const DeliverFreeSave = ({ find, toast, mode, model }) => {
   const [valor, setValor] = useState("");
