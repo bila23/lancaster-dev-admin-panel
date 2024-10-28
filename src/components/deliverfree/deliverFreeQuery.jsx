@@ -94,8 +94,8 @@ const DeliverFreeQuery = () => {
                   emptyMessage="No hay registro(s)"
                 >
                   <Column
-                    field="fechaCreaString"
-                    header="Fecha Creaci&oacute;n"
+                    field="nombre"
+                    header="Nombre"
                     sortable
                     filter
                     filterMatchMode="contains"
@@ -113,6 +113,13 @@ const DeliverFreeQuery = () => {
                     sortable
                     filter
                     body={util.activoBody}
+                    filterMatchMode="contains"
+                  />
+                  <Column
+                    field="fechaCreaString"
+                    header="Fecha Creaci&oacute;n"
+                    sortable
+                    filter
                     filterMatchMode="contains"
                   />
                   <Column body={actionBody} />
