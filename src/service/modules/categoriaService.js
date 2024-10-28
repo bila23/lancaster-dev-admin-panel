@@ -5,7 +5,9 @@ const api = "/categoria";
 
 async function findAll() {
   const { data } = await http.get(api);
-  return data;
+  const result = [];
+  if (data && data.length > 0) for (const m of data) result.push({ ...m });
+  return result;
 }
 
 async function findPadres() {
