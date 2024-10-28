@@ -6,10 +6,16 @@ import { InputNumber } from "primereact/inputnumber";
 import { Dropdown } from "primereact/dropdown";
 
 const DeliverFreeSave = ({ find, toast, mode, model }) => {
+  const [nombre, setNombre] = useState("");
   const [valor, setValor] = useState("");
+  const [activo, setActivo] = useState(true);
+  const [editClass, setEditClass] = useState("");
 
   const init = () => {
-    if (mode === "UPDATE") fillForm();
+    if (mode === "UPDATE") {
+      fillForm();
+      setEditClass("active");
+    } else setEditClass("");
   };
 
   const fillForm = () => {
@@ -21,7 +27,10 @@ const DeliverFreeSave = ({ find, toast, mode, model }) => {
   }, []);
 
   const validateForm = () => {
-    if (!valor) {
+    if (!nombre) {
+      util.warning(toast, "Debe ingresar el nombre");
+      return false;
+    } else if (!valor) {
       util.warning(toast, "Debe ingresar el valor");
       return false;
     } else return true;
@@ -29,7 +38,7 @@ const DeliverFreeSave = ({ find, toast, mode, model }) => {
 
   const doSave = async () => {
     if (validateForm()) {
-      const body = { valor, activo: true };
+      const body = { nombre, valor, activo };
       const { type } = await service.save(body);
       if (type !== "SUCCESS")
         util.warning(toast, "No se pudo guardar el registro");
@@ -43,7 +52,7 @@ const DeliverFreeSave = ({ find, toast, mode, model }) => {
 
   const doUpdate = async () => {
     if (validateForm()) {
-      const body = { valor };
+      const body = { nombre, valor, activo };
       const { type } = await service.update(model._id, body);
       if (type !== "SUCCESS")
         util.error(toast, "No se ha podido actualizar el registro");
@@ -62,6 +71,20 @@ const DeliverFreeSave = ({ find, toast, mode, model }) => {
     <>
       <div className="row">
         <div className="col s12 input-field">
+          <input
+            type="text"
+            id="nombre"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+            className={editClass}
+          />
+          <label htmlFor="nombre" className={editClass}>
+            Ingrese el nombre:
+          </label>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col s12 input-field">
           <div>Ingrese el valor del Delivery:</div>
           <InputNumber
             value={valor}
@@ -69,9 +92,19 @@ const DeliverFreeSave = ({ find, toast, mode, model }) => {
             maxFractionDigits={2}
             onValueChange={(e) => setValor(e.value)}
             style={{ width: "100%" }}
+            locale="en-US"
           />
         </div>
       </div>
+      {mode === "UPDATE" && (
+        <Dropdown
+          value={activo}
+          onChange={(e) => setActivo(e.value)}
+          options={util.ESTADO_OPTIONS}
+          style={{ width: "100%" }}
+          placeholder="Estado del delivery"
+        />
+      )}
       <div className="row">
         <div className="col s12">
           {mode === "SAVE" && (
