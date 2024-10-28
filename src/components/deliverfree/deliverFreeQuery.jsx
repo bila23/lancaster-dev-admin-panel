@@ -3,6 +3,7 @@ import service from "../../service/modules/deliverFreeService";
 import util from "../../service/common/util";
 import Modal from "../common/modal";
 import DeliverFreeSave from "./deliverFreeSave";
+import DeliverProductos from "./deliverProductos";
 import Btn from "../common/btn";
 import { Card } from "primereact/card";
 import { Toast } from "primereact/toast";
@@ -16,6 +17,7 @@ const DeliverFreeQuery = () => {
   const [saveDlg, setSaveDlg] = useState(false);
   const [model, setModel] = useState("");
   const [editDlg, setEditDlg] = useState(false);
+  const [pdcDlg, setPdcDlg] = useState(false);
 
   const find = async () => {
     setLoading(true);
@@ -38,21 +40,39 @@ const DeliverFreeQuery = () => {
     setEditDlg(true);
   };
 
+  const preparePrd = (rowData) => {
+    setModel(rowData);
+    setPdcDlg(true);
+  };
+
   const actionBody = (rowData) => {
     return (
-      <button
-        className="btn-floating btn-medium waves-effect waves-light darken-3 green"
-        title="Editar"
-        onClick={(e) => prepareEdit(rowData)}
-      >
-        <i className="material-icons">edit</i>
-      </button>
+      <>
+        <button
+          className="btn-floating btn-medium waves-effect waves-light darken-4 green"
+          title="Editar"
+          onClick={(e) => prepareEdit(rowData)}
+        >
+          <i className="material-icons">edit</i>
+        </button>
+        <button
+          className="btn-floating btn-medium waves-effect waves-light darken-4 orange"
+          title="Editar"
+          onClick={(e) => preparePrd(rowData)}
+          style={{ marginLeft: "15px" }}
+        >
+          <i className="material-icons">send</i>
+        </button>
+      </>
     );
   };
 
   return (
     <>
       <Toast ref={toast} />
+      <Modal flag={pdcDlg} setFlag={setPdcDlg} header="Categorias">
+        {model && <DeliverProductos toast={toast} idDelivery={model._id} />}
+      </Modal>
       <Modal flag={saveDlg} setFlag={setSaveDlg} header="Nuevo Registro">
         <DeliverFreeSave mode="SAVE" toast={toast} find={find} />
       </Modal>
