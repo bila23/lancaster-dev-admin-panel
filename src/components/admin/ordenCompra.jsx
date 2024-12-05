@@ -133,6 +133,14 @@ const OrdenCompra = () => {
                       <td>{orden.status}</td>
                     </tr>
                     <tr>
+                      <th>Entrega:</th>
+                      <td>
+                        {orden.delivery === false &&
+                          `En tienda - ${orden.distritoNombre}`}
+                        {orden.delivery === true && `Delivery`}
+                      </td>
+                    </tr>
+                    <tr>
                       <th>Transporte:</th>
                       <td>{orden.transporte}</td>
                     </tr>
@@ -298,14 +306,23 @@ const OrdenCompra = () => {
             value={list}
             loading={loading}
             stripedRows
+            size="large"
             emptyMessage="No hay registro(s)"
           >
+            <Column
+              field="_id"
+              header="ID"
+              sortable
+              filter
+              filterMatchMode="contains"
+            />
             <Column
               field="nubefactNumero"
               header="NUBEFACT"
               sortable
               filter
               filterMatchMode="contains"
+              style={{ width: "10%" }}
             />
             <Column
               field="tipoOrden"
@@ -313,6 +330,7 @@ const OrdenCompra = () => {
               sortable
               filter
               filterMatchMode="contains"
+              style={{ width: "10%" }}
             />
             <Column
               field="fecha"
@@ -320,6 +338,7 @@ const OrdenCompra = () => {
               sortable
               filter
               filterMatchMode="contains"
+              style={{ width: "15%" }}
             />
             <Column
               field="status"
@@ -327,6 +346,7 @@ const OrdenCompra = () => {
               sortable
               filter
               filterMatchMode="contains"
+              style={{ width: "10%" }}
             />
             <Column
               field="totalAmount"
@@ -334,9 +354,10 @@ const OrdenCompra = () => {
               sortable
               filter
               filterMatchMode="contains"
+              style={{ width: "10%" }}
             />
             <Column header="Despachado" body={despachadoBodyTemplate} />
-            <Column body={actionBodyTemplate} />
+            <Column body={actionBodyTemplate} style={{ width: "5%" }} />
           </DataTable>
         </div>
       </div>
