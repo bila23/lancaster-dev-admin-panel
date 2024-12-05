@@ -38,8 +38,8 @@ async function deleteById(id) {
   return data;
 }
 
-async function addCategoria(id, body) {
-  const { data } = await http.put(`${api}/add/cat/${id}`, body);
+async function addCategoria(id, idCat) {
+  const { data } = await http.get(`${api}/add/cat/${id}/${idCat}`);
   return data;
 }
 
