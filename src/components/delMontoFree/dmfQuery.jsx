@@ -95,8 +95,7 @@ const DmfQuery = () => {
       <Modal flag={deleteDlg} setFlag={setDeleteDlg} header="Eliminar Registro">
         <div className="row" style={{ marginTop: "15px" }}>
           <div className="col s12" style={{ fontSize: "18px" }}>
-            ¿Esta seguro que desea eliminar el registro asociado a{" "}
-            {model && model.nombre}?
+            ¿Esta seguro que desea eliminar el registro?
           </div>
         </div>
         <div className="row">
