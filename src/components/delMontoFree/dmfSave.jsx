@@ -2,7 +2,7 @@ import React from "react";
 import service from "../../service/modules/deliveryMontoFreeService";
 import SaveUpdateForm from "../common/saveUpdateForm";
 
-const DmfSave = ({ tipo, id, find, model, isUpdate }) => {
+const DmfSave = ({ find, model, isUpdate }) => {
   const initialForm = {
     monto: "",
   };
