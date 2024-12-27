@@ -126,9 +126,15 @@ const Menu = (props) => {
                 </Link>
               </li>
               <li>
+                <Link to="/dmf-query" className="sidenav-close">
+                  <i className="material-icons">question_answer</i>
+                  Monto Delivery Gratis
+                </Link>
+              </li>
+              <li>
                 <Link to="/deliver-free" className="sidenav-close">
                   <i className="material-icons">local_shipping</i>
-                  Deliver por Categoria
+                  Delivery por Categoria
                 </Link>
               </li>
             </ul>
