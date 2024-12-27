@@ -3,6 +3,10 @@ import { confirmDialog } from "primereact/confirmdialog";
 import { Tag } from "primereact/tag";
 import { Button } from "primereact/button";
 
+const handleFormChange = (id, value, setForm) => {
+  setForm((prevForm) => ({ ...prevForm, [id]: value }));
+};
+
 const ESTADO_OPTIONS = [
   { label: "Activo", value: true },
   { label: "Inactivo", value: false },
@@ -589,4 +593,5 @@ export default {
   imageTemplate,
   itemImageNoMsgTemplate,
   ESTADO_OPTIONS,
+  handleFormChange,
 };
