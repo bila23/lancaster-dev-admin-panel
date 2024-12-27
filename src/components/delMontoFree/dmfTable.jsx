@@ -1,6 +1,5 @@
 import React from "react";
 import EmptyField from "../common/emptyField";
-import util from "../../service/common/util";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 
