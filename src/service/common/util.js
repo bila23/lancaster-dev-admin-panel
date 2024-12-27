@@ -553,7 +553,18 @@ const home = {
   url: "/",
 };
 
+const validateForm = (form, requiredFields, toast) => {
+  for (let field of requiredFields) {
+    if (!form[field]) {
+      warning(toast, `El campo ${field} es obligatorio`);
+      return false;
+    }
+  }
+  return true;
+};
+
 export default {
+  validateForm,
   home,
   activoBody,
   headerImageTemplate,
