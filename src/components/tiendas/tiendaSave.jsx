@@ -2,7 +2,7 @@ import React from "react";
 import service from "../../service/modules/tiendaService";
 import SaveUpdateForm from "../common/saveUpdateForm";
 
-const TiendaSave = () => {
+const TiendaSave = ({ find, model, isUpdate }) => {
   const initialForm = {
     descripcion: "",
   };
