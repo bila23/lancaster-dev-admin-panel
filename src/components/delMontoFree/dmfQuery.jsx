@@ -130,7 +130,7 @@ const DmfQuery = () => {
 
       <div className="row">
         <div className="col s7 m6">
-          <h4 className="strong">Proyectos y Estudios</h4>
+          <h4 className="strong">Monto para Delivery Gratis</h4>
         </div>
         <div className="col s5 m6 right-align">
           <h4>
