@@ -132,6 +132,12 @@ const Menu = (props) => {
                 </Link>
               </li>
               <li>
+                <Link to="/tienda-query" className="sidenav-close">
+                  <i className="material-icons">home</i>
+                  Tiendas
+                </Link>
+              </li>
+              <li>
                 <Link to="/deliver-free" className="sidenav-close">
                   <i className="material-icons">local_shipping</i>
                   Delivery por Categoria
