@@ -120,7 +120,7 @@ const TiendaQuery = () => {
 
       <div className="row">
         <div className="col s7 m6">
-          <h4 className="strong">Monto para Delivery Gratis</h4>
+          <h4 className="strong">Tiendas</h4>
         </div>
         <div className="col s5 m6 right-align">
           <h4>
