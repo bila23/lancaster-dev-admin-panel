@@ -128,7 +128,7 @@ const Menu = (props) => {
               <li>
                 <Link to="/deliver-free" className="sidenav-close">
                   <i className="material-icons">local_shipping</i>
-                  Deliver Gratis
+                  Deliver por Categoria
                 </Link>
               </li>
             </ul>
