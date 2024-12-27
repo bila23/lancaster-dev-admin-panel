@@ -152,6 +152,12 @@ const OrdenCompra = () => {
                       <th>Total:</th>
                       <td>{orden.totalAmount}</td>
                     </tr>
+                    {orden.deliveryFree !== undefined && (
+                      <tr>
+                        <th>Delivery Gratis:</th>
+                        <td>{orden.deliveryFree ? "SI" : "NO"}</td>
+                      </tr>
+                    )}
                     {orden.nubeFact && orden.nubeFact.enlace_del_pdf && (
                       <tr>
                         <th colSpan={2}>
