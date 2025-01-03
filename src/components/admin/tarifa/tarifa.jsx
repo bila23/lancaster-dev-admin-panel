@@ -15,7 +15,6 @@ const Tarifa = () => {
   const [updateDialog, setUpdateDialog] = useState(false);
   const [expandedRows, setExpandedRows] = useState([]);
   const [saveDlg, setSaveDlg] = useState(false);
-  const items = [{ label: "Administración" }, { label: "Tarifas" }];
 
   const find = async () => {
     setLoading(true);
