@@ -11,6 +11,7 @@ const TarifaSave = ({ row, find, mode }) => {
   const [departamento, setDepartamento] = useState("");
   const [provincia, setProvincia] = useState("");
   const [distrito, setDistrito] = useState("");
+  const [clazz, setClazz] = useState("");
   const [deliveryGratis, setDeliveryGratis] = useState(false);
 
   useEffect(() => {
@@ -22,6 +23,7 @@ const TarifaSave = ({ row, find, mode }) => {
   };
 
   const fillForm = () => {
+    setClazz("active");
     setDepartamento(row.departamento);
     setProvincia(row.provincia);
     setDistrito(row.distrito);
@@ -112,7 +114,9 @@ const TarifaSave = ({ row, find, mode }) => {
             onChange={(e) => setDepartamento(e.target.value)}
             style={{ textTransform: "uppercase" }}
           />
-          <label htmlFor="departamento">Departamento:</label>
+          <label htmlFor="departamento" className={clazz}>
+            Departamento:
+          </label>
         </div>
       </div>
       <div className="row">
@@ -124,7 +128,9 @@ const TarifaSave = ({ row, find, mode }) => {
             style={{ textTransform: "uppercase" }}
             id="provincia"
           />
-          <label htmlFor="provincia">Provincia:</label>
+          <label htmlFor="provincia" className={clazz}>
+            Provincia:
+          </label>
         </div>
       </div>
       <div className="row">
@@ -136,7 +142,9 @@ const TarifaSave = ({ row, find, mode }) => {
             style={{ textTransform: "uppercase" }}
             id="distrito"
           />
-          <label htmlFor="distrito">Distrito:</label>
+          <label htmlFor="distrito" className={clazz}>
+            Distrito:
+          </label>
         </div>
       </div>
       <div className="row">
@@ -148,7 +156,9 @@ const TarifaSave = ({ row, find, mode }) => {
             value={tarifa}
             onChange={(e) => setTarifa(e.target.value)}
           />
-          <label htmlFor="tarifa">Tarifa:</label>
+          <label htmlFor="tarifa" className={clazz}>
+            Tarifa:
+          </label>
         </div>
       </div>
       <div className="row">
@@ -160,7 +170,9 @@ const TarifaSave = ({ row, find, mode }) => {
             value={plazo}
             onChange={(e) => setPlazo(e.target.value)}
           />
-          <label htmlFor="plazo">Plazo:</label>
+          <label htmlFor="plazo" className={clazz}>
+            Plazo:
+          </label>
         </div>
       </div>
       <div className="row">
