@@ -97,87 +97,86 @@ const TarifaSave = ({ row, find, mode }) => {
   return (
     <>
       <Toast ref={toast} />
-      <table>
-        <tbody>
-          <tr>
-            <th>Departamento:</th>
-            <td>
-              <input
-                type="text"
-                value={departamento}
-                onChange={(e) => setDepartamento(e.target.value)}
-                style={{ textTransform: "uppercase" }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>Provincia:</th>
-            <td>
-              <input
-                type="text"
-                value={provincia}
-                onChange={(e) => setProvincia(e.target.value)}
-                style={{ textTransform: "uppercase" }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>Distrito:</th>
-            <td>
-              <input
-                type="text"
-                value={distrito}
-                onChange={(e) => setDistrito(e.target.value)}
-                style={{ textTransform: "uppercase" }}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>Tarifa:</th>
-            <td>
-              <input
-                type="number"
-                name="tarifa"
-                id="tarifa"
-                value={tarifa}
-                onChange={(e) => setTarifa(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <th>Plazo:</th>
-            <td>
-              <input
-                type="text"
-                name="plazo"
-                id="plazo"
-                value={plazo}
-                onChange={(e) => setPlazo(e.target.value)}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td colSpan={2}>
-              {mode === "UPDATE" && (
-                <button
-                  className="btn waves-effect waves-light black darken-4"
-                  onClick={updateTarifa}
-                >
-                  Actualizar
-                </button>
-              )}
-              {mode === "SAVE" && (
-                <button
-                  className="btn waves-effect waves-light black darken-4"
-                  onClick={doSave}
-                >
-                  Guardar
-                </button>
-              )}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="row">
+        <div className="col s12 input-field">
+          <input
+            id="departamento"
+            type="text"
+            value={departamento}
+            onChange={(e) => setDepartamento(e.target.value)}
+            style={{ textTransform: "uppercase" }}
+          />
+          <label htmlFor="departamento">Departamento:</label>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col s12 input-field">
+          <input
+            type="text"
+            value={provincia}
+            onChange={(e) => setProvincia(e.target.value)}
+            style={{ textTransform: "uppercase" }}
+            id="provincia"
+          />
+          <label htmlFor="provincia">Provincia:</label>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col s12 input-field">
+          <input
+            type="text"
+            value={distrito}
+            onChange={(e) => setDistrito(e.target.value)}
+            style={{ textTransform: "uppercase" }}
+            id="distrito"
+          />
+          <label htmlFor="distrito">Distrito:</label>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col s12 input-field">
+          <input
+            type="number"
+            name="tarifa"
+            id="tarifa"
+            value={tarifa}
+            onChange={(e) => setTarifa(e.target.value)}
+          />
+          <label htmlFor="tarifa">Tarifa:</label>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col s12 input-field">
+          <input
+            type="text"
+            name="plazo"
+            id="plazo"
+            value={plazo}
+            onChange={(e) => setPlazo(e.target.value)}
+          />
+          <label htmlFor="plazo">Plazo:</label>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col s12">
+          {mode === "UPDATE" && (
+            <button
+              className="btn waves-effect waves-light black darken-4"
+              onClick={updateTarifa}
+            >
+              Actualizar
+            </button>
+          )}
+          {mode === "SAVE" && (
+            <button
+              className="btn waves-effect waves-light black darken-4"
+              onClick={doSave}
+            >
+              Guardar
+            </button>
+          )}
+        </div>
+      </div>
     </>
   );
 };
