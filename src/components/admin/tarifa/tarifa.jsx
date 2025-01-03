@@ -59,6 +59,10 @@ const Tarifa = () => {
     );
   };
 
+  const deliveryGratisBody = ({ deliveryGratis }) => {
+    return deliveryGratis ? "Sí" : "No";
+  };
+
   return (
     <>
       <Modal flag={saveDlg} setFlag={setSaveDlg} header="Nuevo Registro">
@@ -137,6 +141,12 @@ const Tarifa = () => {
               sortable
               filter
               filterMatchMode="contains"
+            />
+            <Column
+              field="deliveryGratis"
+              header="Delivery Gratis"
+              sortable
+              body={deliveryGratisBody}
             />
             <Column body={editBodyTemplate} />
           </DataTable>
