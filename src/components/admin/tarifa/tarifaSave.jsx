@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import service from "../../../service/modules/tarifaService";
 import util from "../../../service/common/util";
 import { Toast } from "primereact/toast";
+import { Dropdown } from "primereact/dropdown";
 
 const TarifaSave = ({ row, find, mode }) => {
   const toast = useRef(null);
@@ -10,6 +11,7 @@ const TarifaSave = ({ row, find, mode }) => {
   const [departamento, setDepartamento] = useState("");
   const [provincia, setProvincia] = useState("");
   const [distrito, setDistrito] = useState("");
+  const [deliveryGratis, setDeliveryGratis] = useState(false);
 
   useEffect(() => {
     init();
@@ -25,6 +27,7 @@ const TarifaSave = ({ row, find, mode }) => {
     setDistrito(row.distrito);
     setTarifa(row.tarifa);
     setPlazo(row.plazo);
+    setDeliveryGratis(row.deliveryGratis);
   };
 
   const validateForm = () => {
@@ -55,6 +58,7 @@ const TarifaSave = ({ row, find, mode }) => {
         departamento: departamento.toUpperCase(),
         provincia: provincia.toUpperCase(),
         distrito: distrito.toUpperCase(),
+        deliveryGratis,
       };
       const { type } = await service.update(row._id, body);
       if (type === "SUCCESS") {
@@ -71,6 +75,7 @@ const TarifaSave = ({ row, find, mode }) => {
     setProvincia("");
     setPlazo("");
     setTarifa("");
+    setDeliveryGratis(false);
   };
 
   const doSave = async () => {
@@ -81,6 +86,7 @@ const TarifaSave = ({ row, find, mode }) => {
         departamento: departamento.toUpperCase(),
         provincia: provincia.toUpperCase(),
         distrito: distrito.toUpperCase(),
+        deliveryGratis,
       };
       const { type } = await service.save(body);
       if (type === "EXIST")
@@ -159,6 +165,20 @@ const TarifaSave = ({ row, find, mode }) => {
       </div>
       <div className="row">
         <div className="col s12">
+          <div>Tiene Delivery Gratis:</div>
+          <Dropdown
+            value={deliveryGratis}
+            onChange={(e) => setDeliveryGratis(e.value)}
+            options={[
+              { label: "Si", value: true },
+              { label: "No", value: false },
+            ]}
+            style={{ width: "100%" }}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col s12 input-field">
           {mode === "UPDATE" && (
             <button
               className="btn waves-effect waves-light black darken-4"
