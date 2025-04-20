@@ -20,6 +20,7 @@ const PaginaForm = () => {
   const [tema, setTema] = useState("");
   const [titulo, setTitulo] = useState("");
   const [subtitulo, setSubtitulo] = useState("");
+  const [link, setLink] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [user, setUser] = useState(authService.getUser());
   const [loading, setLoading] = useState(false);
@@ -167,10 +168,11 @@ const PaginaForm = () => {
       setLoading(true);
       try {
         const body = {
-          tema: tema,
-          titulo: titulo,
-          subtitulo: subtitulo,
-          descripcion: descripcion,
+          tema,
+          titulo,
+          subtitulo,
+          descripcion,
+          link,
           usuarioCrea: user,
           fotos: null,
         };
@@ -179,6 +181,7 @@ const PaginaForm = () => {
           await find();
           setDescripcion("");
           setTema("");
+          setLink("");
           setTitulo("");
           setSubtitulo("");
           util.success(toast, "Se ha guardado correctamente el registro");
@@ -332,6 +335,17 @@ const PaginaForm = () => {
             </div>
           </div>
           <div className="row">
+            <div className="col s12 input-field">
+              <input
+                type="text"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+                id="link"
+              />
+              <label htmlFor="link">Ingrese el link:</label>
+            </div>
+          </div>
+          <div className="row">
             <div className="col s12">
               <div>Descripción de la sección:</div>
               <Editor
@@ -409,6 +423,13 @@ const PaginaForm = () => {
             <Column
               field="subtitulo"
               header="Subtitulo"
+              sortable
+              filter
+              filterMatchMode="contains"
+            />
+            <Column
+              field="link"
+              header="Link"
               sortable
               filter
               filterMatchMode="contains"
