@@ -14,6 +14,7 @@ const PaginaEdit = (props) => {
   const [titulo, setTitulo] = useState("");
   const [subtitulo, setSubtitulo] = useState("");
   const [descripcion, setDescripcion] = useState("");
+  const [link, setLink] = useState("");
   const [fotos, setFotos] = useState([]);
   const [idFoto, setIdFoto] = useState("");
   const [showDeleteFoto, setShowDeleteFoto] = useState(false);
@@ -72,6 +73,7 @@ const PaginaEdit = (props) => {
     setSubtitulo(model.subtitulo);
     setDescripcion(model.descripcion);
     setFotos(model.fotos);
+    setLink(model.link);
   };
 
   useEffect(async () => {
@@ -84,10 +86,11 @@ const PaginaEdit = (props) => {
     if (!descripcion) util.warning(toast, "Debe ingresar la descripción");
     else {
       const body = {
-        tema: tema,
-        titulo: titulo,
-        subtitulo: subtitulo,
-        descripcion: descripcion,
+        tema,
+        titulo,
+        subtitulo,
+        descripcion,
+        link,
         _id: id,
       };
       try {
@@ -187,6 +190,19 @@ const PaginaEdit = (props) => {
                       />
                       <label htmlFor="subtitulo" className="active">
                         Ingrese el subtitulo:
+                      </label>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col s12 input-field">
+                      <input
+                        type="text"
+                        value={link}
+                        onChange={(e) => setLink(e.target.value)}
+                        id="link"
+                      />
+                      <label htmlFor="link" className="active">
+                        Ingrese el link:
                       </label>
                     </div>
                   </div>
