@@ -4,7 +4,14 @@ const api = "/influencer-descuento";
 
 async function findAll() {
   const { data } = await http.get(api);
-  return data;
+  return convertList(data);
+}
+
+function convertList(data) {
+  return data.map((item) => ({
+    ...item,
+    activoString: item.activo ? "Si" : "No",
+  }));
 }
 
 async function update(id, body) {
