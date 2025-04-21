@@ -143,6 +143,12 @@ const Menu = (props) => {
                   Delivery por Categoria
                 </Link>
               </li>
+              <li>
+                <Link to="/influencer-descuento" className="sidenav-close">
+                  <i className="material-icons">campaign</i>
+                  Descuentos por Influencer
+                </Link>
+              </li>
             </ul>
           </CollapsibleItem>
         </Collapsible>

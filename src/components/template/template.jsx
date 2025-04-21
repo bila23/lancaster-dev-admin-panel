@@ -19,12 +19,14 @@ import CategoriaQuery from "../categoria/categoriaQuery";
 import DeliverFreeQuery from "../deliverfree/deliverFreeQuery";
 import DmfQuery from "../delMontoFree/dmfQuery";
 import TiendaQuery from "../tiendas/tiendaQuery";
+import InfDescQuery from "../influencer/infDescQuery";
 
 class Template extends Component {
   render() {
     const { user } = this.props;
     return (
       <Switch>
+        <Route path="/influencer-descuento" component={InfDescQuery} />
         <Route path="/tienda-query" component={TiendaQuery} />
         <Route path="/dmf-query" component={DmfQuery} />
         <Route path="/deliver-free" component={DeliverFreeQuery} />
