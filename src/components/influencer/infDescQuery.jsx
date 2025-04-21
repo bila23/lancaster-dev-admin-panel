@@ -85,6 +85,7 @@ const InfDescQuery = () => {
   return (
     <>
       <Toast ref={toast} />
+
       <Modal flag={deleteDlg} setFlag={setDeleteDlg} header="Eliminar Registro">
         <DeleteConfirm
           setDeleteDlg={setDeleteDlg}
