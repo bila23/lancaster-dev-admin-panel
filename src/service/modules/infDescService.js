@@ -7,11 +7,6 @@ async function findAll() {
   return data;
 }
 
-async function save(body) {
-  const { data } = await http.post(api, body);
-  return data;
-}
-
 async function update(id, body) {
   const { data } = await http.put(`${api}/${id}`, body);
   return data;
