@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import ordenCompraService from "../../service/modules/ordenCompraService";
 import util from "../../service/common/util";
 import Moment from "react-moment";
