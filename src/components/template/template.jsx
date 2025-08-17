@@ -12,6 +12,7 @@ import DescuentoQuery from "../descuentos/descuentoQuery";
 import PaginaForm from "../pagina/paginaForm";
 import PaginaEdit from "../pagina/paginaEdit";
 import UsuarioQuery from "../admin/usuarioQuery";
+import OrdenQuery from "../admin/orden/ordenQuery";
 import OrdenCompra from "../admin/ordenCompra";
 import userShopQuery from "../user-shop/userShopQuery";
 import Tarifa from "../admin/tarifa/tarifa";
@@ -26,6 +27,7 @@ class Template extends Component {
     const { user } = this.props;
     return (
       <Switch>
+        <Route path="/ordenes-query" component={OrdenQuery} />
         <Route path="/influencer-descuento" component={InfDescQuery} />
         <Route path="/tienda-query" component={TiendaQuery} />
         <Route path="/dmf-query" component={DmfQuery} />

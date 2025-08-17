@@ -1,14 +1,9 @@
 import http from "../common/httpService";
 import moment from "moment";
 
-const api = "/orden";
+const api = "/orden-facele";
 
-async function despachado(idOrden) {
-  const { data: result } = await http.put(`${api}/despachado/${idOrden}`);
-  return result;
-}
-
-async function findNubefact() {
+async function findAll() {
   const { data } = await http.get(api);
   return prepareList(data);
 }
@@ -26,6 +21,5 @@ function prepareList(list) {
 }
 
 export default {
-  findNubefact,
-  despachado,
+  findAll,
 };

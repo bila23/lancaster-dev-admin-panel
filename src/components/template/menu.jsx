@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { Collapsible, CollapsibleItem, Icon } from "react-materialize";
 
@@ -93,6 +92,12 @@ const Menu = (props) => {
                 <Link to="/tarifa" className="sidenav-close">
                   <i className="material-icons">description</i>
                   Tarifas
+                </Link>
+              </li>
+              <li>
+                <Link to="/ordenes-query" className="sidenav-close">
+                  <i className="material-icons">beenhere</i>
+                  Orden de Compras TEST
                 </Link>
               </li>
               <li>
